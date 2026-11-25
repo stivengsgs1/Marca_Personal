@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marca Personal | Liderazgo con criterio.</title>
+
+  <!-- Tipografías oficiales de la marca: Lato (Principal) y Playfair Display (Secundaria) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS para diseño responsivo, limpio y sobrio -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#172B46',
+              gold: '#B49A70',
+              gray: '#D9DDE1',
+              white: '#FFFFFF',
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       SISTEMA DE DISEÑO E IDENTIDAD VISUAL
+       Colores oficiales:
+       - Azul profundo: #172B46
+       - Dorado beige:  #B49A70
+       - Gris claro:    #D9DDE1
+       - Blanco:        #FFFFFF
+       ========================================================================== */
+    :root {
+      --color-navy: #172B46;
+      --color-gold: #B49A70;
+      --color-gray: #D9DDE1;
+      --color-white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--color-navy);
+      background-color: var(--color-white);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Transiciones entre páginas independientes */
+    .page-view {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .page-view.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animaciones sutiles de aparición progresiva al desplazarse */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Estilos de navegación activa */
+    .nav-link {
+      position: relative;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--color-gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active-nav::after {
+      width: 100%;
+    }
+
+    .nav-link.active-nav {
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    /* Tarjetas elegantes con profundidad sutil */
+    .elegant-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-gray);
+      border-radius: 0.75rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .elegant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px -10px rgba(23, 43, 70, 0.12);
+      border-color: var(--color-gold);
+    }
+
+    /* Botones institucionales */
+    .btn-primary {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      border: 1px solid var(--color-navy);
+      border-radius: 0.5rem;
+      transition: all 0.28s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-navy);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-navy);
+      border: 1px solid var(--color-navy);
+      border-radius: 0.5rem;
+      transition: all 0.28s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+    }
+
+    /* Etiqueta de recurso provisional reemplazable */
+    .replaceable-badge {
+      background-color: rgba(23, 43, 70, 0.92);
+      color: #FFFFFF;
+      border: 1px solid #B49A70;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Carrusel suave */
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Líneas divisorias doradas */
+    .gold-divider {
+      width: 64px;
+      height: 3px;
+      background-color: var(--color-gold);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="bg-white text-[#172B46] selection:bg-[#B49A70] selection:text-[#172B46]">
+
+  <!-- ========================================================================
+       BARRA SUPERIOR DE NAVEGACIÓN COMPARTIDA (Todas las ventanas)
+       Incluye: Logotipo reemplazable (imagen real), Nombre del titular,
+       Botones de navegación entre las 4 páginas y Menú Hamburguesa.
+       ======================================================================== -->
+  <header class="sticky top-0 z-50 bg-[#172B46] text-white shadow-md border-b border-[#B49A70]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logotipo (Archivo de imagen independiente y reemplazable) + Nombre del titular -->
+        <button onclick="navigateTo('inicio')" class="flex items-center gap-3.5 text-left group focus:outline-none" aria-label="Ir a la página principal">
+          <div class="w-12 h-12 rounded-lg bg-white/10 border border-[#B49A70]/50 p-1.5 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+            <!-- RUTA REEMPLAZABLE: imagenes/logo.png o imagenes/logo.svg -->
+            <img id="navbar-logo-img"
+                 src=""
+                 alt="Logotipo de la marca personal"
+                 class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <span class="block font-playfair text-lg sm:text-xl font-semibold tracking-wide text-white leading-tight">
+              [Nombre del Titular]
+            </span>
+            <span class="block text-xs tracking-widest uppercase text-[#B49A70] font-normal mt-0.5">
+              Liderazgo con criterio.
+            </span>
+          </div>
+        </button>
+
+        <!-- Navegación Escritorio (4 páginas independientes) -->
+        <nav class="hidden lg:flex items-center space-x-7" aria-label="Navegación principal">
+          <button onclick="navigateTo('inicio')" data-nav="inicio" class="nav-link active-nav text-sm tracking-wide py-2 text-white hover:text-[#B49A70]">
+            Inicio
+          </button>
+          <button onclick="navigateTo('identidad-estrategia')" data-nav="identidad-estrategia" class="nav-link text-sm tracking-wide py-2 text-white hover:text-[#B49A70]">
+            Identidad y estrategia de marca
+          </button>
+          <button onclick="navigateTo('identidad-visual')" data-nav="identidad-visual" class="nav-link text-sm tracking-wide py-2 text-white hover:text-[#B49A70]">
+            Identidad visual
+          </button>
+          <button onclick="navigateTo('perfil-proyeccion')" data-nav="perfil-proyeccion" class="nav-link text-sm tracking-wide py-2 text-white hover:text-[#B49A70]">
+            Perfil y proyección personal
+          </button>
+        </nav>
+
+        <!-- Botón Menú Hamburguesa (Disponible para móvil, tableta y alternativa rápida) -->
+        <div class="flex items-center gap-3">
+          <button id="hamburger-btn"
+                  type="button"
+                  onclick="toggleMobileMenu()"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu-drawer"
+                  class="inline-flex items-center justify-center p-2.5 rounded-lg text-white hover:text-[#B49A70] hover:bg-white/10 border border-white/15 transition focus:outline-none"
+                  title="Menú de navegación">
+            <span class="sr-only">Abrir menú principal</span>
+            <!-- Icono Hamburguesa -->
+            <svg id="icon-menu-open" class="w-6 h-6 block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- Icono Cerrar -->
+            <svg id="icon-menu-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Hamburguesa (Navegación completa + acceso directo a cada sección) -->
+    <div id="mobile-menu-drawer" class="hidden bg-[#172B46] border-t border-[#B49A70]/30 shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <p class="text-xs uppercase tracking-widest text-[#B49A70] font-bold mb-3">Páginas del Sitio Web</p>
+          <button onclick="navigateTo('inicio')" data-nav="inicio" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-lg bg-white/5 hover:bg-[#B49A70] hover:text-[#172B46] text-white font-medium transition flex items-center justify-between">
+            <span>00. Página Principal (Inicio)</span>
+            <span class="text-xs opacity-75">→</span>
+          </button>
+          <button onclick="navigateTo('identidad-estrategia')" data-nav="identidad-estrategia" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-lg bg-white/5 hover:bg-[#B49A70] hover:text-[#172B46] text-white font-medium transition flex items-center justify-between">
+            <span>01. Ventana 1: Identidad y estrategia de marca</span>
+            <span class="text-xs opacity-75">→</span>
+          </button>
+          <button onclick="navigateTo('identidad-visual')" data-nav="identidad-visual" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-lg bg-white/5 hover:bg-[#B49A70] hover:text-[#172B46] text-white font-medium transition flex items-center justify-between">
+            <span>02. Ventana 2: Identidad visual</span>
+            <span class="text-xs opacity-75">→</span>
+          </button>
+          <button onclick="navigateTo('perfil-proyeccion')" data-nav="perfil-proyeccion" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-lg bg-white/5 hover:bg-[#B49A70] hover:text-[#172B46] text-white font-medium transition flex items-center justify-between">
+            <span>03. Ventana 3: Perfil y proyección personal</span>
+            <span class="text-xs opacity-75">→</span>
+          </button>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-5 border border-white/10 flex flex-col justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-[#B49A70] font-bold mb-2">Estructura de Archivos (GitHub / Netlify)</p>
+            <p class="text-sm text-[#D9DDE1] leading-relaxed">
+              Los recursos gráficos están preparados para sustituirse directamente en la carpeta <code class="text-[#B49A70]">imagenes/</code> (<code class="text-white">logo.png</code>, <code class="text-white">foto-perfil.jpg</code>, <code class="text-white">hoja-de-vida.jpg</code>) sin alterar la estructura del diseño.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#D9DDE1]">
+            <span>Slogan: <strong class="text-white">Liderazgo con criterio.</strong></span>
+            <button onclick="toggleMobileMenu()" class="text-[#B49A70] underline hover:text-white">Cerrar menú</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       CONTENEDOR PRINCIPAL DE LAS 4 PÁGINAS INDEPENDIENTES
+       ======================================================================== -->
+  <main id="app-content">
+
+    <!-- ======================================================================
+         PÁGINA PRINCIPAL (INICIO)
+         Contiene exclusivamente:
+         3.1. Fotografía y descripción personal (estructura provisional reemplazable)
+         3.2. Valores de marca (3 categorías, 12 valores exactos)
+         3.3. Objetivo de marca (texto exacto)
+         3.4. Propuesta de valor (texto exacto)
+         3.5. Reputación y testimonios (carrusel de 5 tarjetas provisionales)
+         ====================================================================== -->
+    <section id="page-inicio" class="page-view active" aria-label="Página Principal">
+
+      <!-- 3.1. Fotografía y descripción personal -->
+      <div class="bg-[#172B46] text-white py-16 sm:py-24 border-b-4 border-[#B49A70]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+            <!-- Espacio amplio y reemplazable para fotografía profesional -->
+            <div class="lg:col-span-5">
+              <div class="relative rounded-2xl overflow-hidden bg-[#1e3759] border-2 border-[#B49A70]/60 shadow-2xl aspect-[4/5] max-w-md mx-auto">
+                <!-- RUTA REEMPLAZABLE: imagenes/foto-perfil.jpg -->
+                <img id="hero-profile-img"
+                     src=""
+                     alt="Espacio reservado para fotografía profesional del titular"
+                     class="w-full h-full object-cover" />
+                <div class="absolute bottom-3 left-3 right-3 replaceable-badge px-3 py-2 rounded-lg flex items-center justify-between">
+                  <span>Recurso provisional · Reemplazar por: <strong>imagenes/foto-perfil.jpg</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nombre del titular y espacio para breve descripción o presentación -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#B49A70]/40 text-xs uppercase tracking-widest text-[#B49A70]">
+                <span>Marca Personal · Presentación Oficial</span>
+              </div>
+
+              <h1 class="font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                [Nombre del Titular de la Marca Personal]
+              </h1>
+
+              <p class="font-playfair italic text-xl sm:text-2xl text-[#B49A70]">
+                «Liderazgo con criterio.»
+              </p>
+
+              <div class="gold-divider"></div>
+
+              <!-- Bloque editable para la descripción profesional definitiva -->
+              <div class="bg-white/5 border border-white/15 rounded-xl p-6 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">
+                    Presentación Profesional (Espacio Provisional)
+                  </span>
+                  <span class="text-xs text-[#D9DDE1]/80 bg-white/10 px-2.5 py-0.5 rounded">
+                    Texto editable
+                  </span>
+                </div>
+                <p class="text-[#D9DDE1] text-base sm:text-lg leading-relaxed">
+                  [Espacio reservado para la descripción o presentación profesional definitiva del titular. Aquí se incorporará su trayectoria, enfoque profesional y propósito al servicio del desarrollo humano y organizacional, sin inventar ni alterar información real.]
+                </p>
+              </div>
+
+              <!-- Accesos directos a las otras 3 ventanas independientes -->
+              <div class="pt-4 flex flex-wrap gap-3">
+                <button onclick="navigateTo('identidad-estrategia')" class="px-5 py-3 rounded-lg bg-[#B49A70] text-[#172B46] font-bold text-sm hover:bg-white transition shadow-md">
+                  Identidad y estrategia de marca →
+                </button>
+                <button onclick="navigateTo('identidad-visual')" class="px-5 py-3 rounded-lg bg-white/10 text-white border border-white/25 font-medium text-sm hover:bg-white hover:text-[#172B46] transition">
+                  Identidad visual
+                </button>
+                <button onclick="navigateTo('perfil-proyeccion')" class="px-5 py-3 rounded-lg bg-white/10 text-white border border-white/25 font-medium text-sm hover:bg-white hover:text-[#172B46] transition">
+                  Perfil y proyección personal
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.2. Valores de marca (Tres categorías, doce valores exactos) -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-14 reveal-on-scroll">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Pilares Fundamentales</span>
+            <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-[#172B46] mt-2">
+              Valores de Marca
+            </h2>
+            <div class="gold-divider mx-auto mt-4"></div>
+          </div>
+
+          <!-- Tres tarjetas principales, una al lado de la otra -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Categoría 1: VALORES FUNCIONALES -->
+            <article class="elegant-card p-7 sm:p-8 flex flex-col justify-between reveal-on-scroll border-t-4 border-t-[#172B46]">
+              <div>
+                <div class="mb-6 pb-4 border-b border-[#D9DDE1]">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">Categoría 01</span>
+                  <h3 class="font-playfair text-2xl font-bold text-[#172B46] mt-1">
+                    VALORES FUNCIONALES
+                  </h3>
+                  <p class="text-sm text-[#172B46]/80 italic mt-1">
+                    Transmiten confianza profesional.
+                  </p>
+                </div>
+
+                <ol class="space-y-5">
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">1.</span> Integridad:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      actuar con honestidad y coherencia entre lo que se piensa, comunica y hace.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">2.</span> Responsabilidad:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      asumir compromisos y responder por las decisiones y resultados.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">3.</span> Excelencia:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      mantener estándares de calidad y buscar la mejora continua.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">4.</span> Visión estratégica:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      comprender el contexto, anticipar oportunidades y tomar decisiones orientadas al futuro.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- Categoría 2: VALORES SOCIALES -->
+            <article class="elegant-card p-7 sm:p-8 flex flex-col justify-between reveal-on-scroll border-t-4 border-t-[#B49A70]">
+              <div>
+                <div class="mb-6 pb-4 border-b border-[#D9DDE1]">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">Categoría 02</span>
+                  <h3 class="font-playfair text-2xl font-bold text-[#172B46] mt-1">
+                    VALORES SOCIALES
+                  </h3>
+                  <p class="text-sm text-[#172B46]/80 italic mt-1">
+                    Transmiten conexión humana.
+                  </p>
+                </div>
+
+                <ol class="space-y-5">
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">5.</span> Empatía:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      comprender las necesidades, perspectivas y emociones de las personas.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">6.</span> Respeto:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      reconocer la dignidad, las diferencias y las capacidades de los demás.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">7.</span> Colaboración:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      construir soluciones mediante el trabajo conjunto.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">8.</span> Confianza:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      desarrollar relaciones basadas en credibilidad, transparencia y cumplimiento.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </article>
+
+            <!-- Categoría 3: VALORES EMOCIONALES -->
+            <article class="elegant-card p-7 sm:p-8 flex flex-col justify-between reveal-on-scroll border-t-4 border-t-[#172B46]">
+              <div>
+                <div class="mb-6 pb-4 border-b border-[#D9DDE1]">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">Categoría 03</span>
+                  <h3 class="font-playfair text-2xl font-bold text-[#172B46] mt-1">
+                    VALORES EMOCIONALES
+                  </h3>
+                  <p class="text-sm text-[#172B46]/80 italic mt-1">
+                    Transmiten crecimiento y conexión emocional.
+                  </p>
+                </div>
+
+                <ol class="space-y-5">
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">9.</span> Autenticidad:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      actuar desde una identidad genuina y coherente.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">10.</span> Compromiso:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      involucrarse genuinamente con las personas y los objetivos compartidos.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">11.</span> Resiliencia:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      afrontar dificultades, aprender y adaptarse ante los cambios.
+                    </p>
+                  </li>
+                  <li class="space-y-1">
+                    <p class="font-bold text-[#172B46] text-base">
+                      <span class="text-[#B49A70] mr-1">12.</span> Propósito:
+                    </p>
+                    <p class="text-sm text-[#172B46]/85 leading-relaxed pl-5">
+                      encontrar sentido en las acciones y orientar los esfuerzos hacia objetivos trascendentes.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.3. Objetivo de marca (Sección destacada) -->
+      <div class="py-16 bg-[#172B46] text-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+          <div class="border border-[#B49A70]/50 rounded-2xl p-8 sm:p-12 bg-white/[0.03] relative">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-[2px] bg-[#B49A70]"></span>
+              <h2 class="font-playfair text-2xl sm:text-3xl font-bold text-[#B49A70] tracking-wide">
+                OBJETIVO DE MARCA
+              </h2>
+            </div>
+            <p class="text-lg sm:text-xl text-white leading-relaxed font-light">
+              Contribuir al fortalecimiento y transformación de las organizaciones mediante el desarrollo de las personas, el fortalecimiento del liderazgo y la construcción de culturas empresariales sólidas, promoviendo una evolución organizacional que integre el bienestar humano con los resultados empresariales.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.4. Propuesta de valor (Sección diferenciada del objetivo de marca) -->
+      <div class="py-20 bg-[#D9DDE1]/35 border-b border-[#D9DDE1]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+          <div class="bg-white rounded-2xl p-8 sm:p-12 shadow-sm border-l-8 border-l-[#B49A70] border border-[#D9DDE1]">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Diferenciación Estratégica</span>
+            <h2 class="font-playfair text-2xl sm:text-3xl font-bold text-[#172B46] mt-1 mb-6">
+              PROPUESTA DE VALOR
+            </h2>
+            <div class="space-y-4 text-[#172B46] text-base sm:text-lg leading-relaxed">
+              <p>
+                Acompañamos a las organizaciones en su evolución mediante soluciones que integran el desarrollo humano, el fortalecimiento del liderazgo y la transformación de la cultura empresarial.
+              </p>
+              <p>
+                Combinamos el conocimiento del comportamiento humano con una visión estratégica del negocio para comprender las necesidades de cada organización, fortalecer sus capacidades y generar condiciones que favorezcan tanto el bienestar de las personas como los resultados empresariales.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.5. Reputación y testimonios (Carrusel funcional con 5 tarjetas provisionales) -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal-on-scroll">
+            <div>
+              <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Percepción y Credibilidad</span>
+              <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-[#172B46] mt-1">
+                Reputación y Testimonios
+              </h2>
+              <p class="text-sm text-[#172B46]/75 mt-2">
+                Ejemplos provisionales preparados para incorporar testimonios reales y relaciones autorizadas posteriormente.
+              </p>
+            </div>
+
+            <!-- Controles de navegación del carrusel -->
+            <div class="flex items-center gap-3">
+              <button type="button"
+                      onclick="moveTestimonialCarousel(-1)"
+                      aria-label="Testimonio anterior"
+                      class="w-11 h-11 rounded-lg border border-[#172B46] text-[#172B46] hover:bg-[#172B46] hover:text-white flex items-center justify-center transition font-bold">
+                ←
+              </button>
+              <span id="carousel-indicator" class="text-sm font-bold text-[#172B46] px-2">
+                01 / 05
+              </span>
+              <button type="button"
+                      onclick="moveTestimonialCarousel(1)"
+                      aria-label="Siguiente testimonio"
+                      class="w-11 h-11 rounded-lg bg-[#172B46] text-white hover:bg-[#B49A70] hover:text-[#172B46] flex items-center justify-center transition font-bold">
+                →
+              </button>
+            </div>
+          </div>
+
+          <!-- Ventana del Carrusel -->
+          <div class="overflow-hidden">
+            <div id="testimonial-track" class="carousel-track gap-6">
+
+              <!-- Testimonio 01 -->
+              <article class="testimonial-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] elegant-card p-7 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="font-playfair text-lg font-bold text-[#B49A70]">01 · Liderazgo</span>
+                    <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#D9DDE1]/60 text-[#172B46]">
+                      Testimonio de ejemplo
+                    </span>
+                  </div>
+                  <blockquote class="text-[#172B46] text-base leading-relaxed italic mb-6">
+                    “Es una persona que sabe afrontar situaciones difíciles con serenidad. Tiene la capacidad de escuchar las diferentes perspectivas y buscar soluciones justas para todos”.
+                  </blockquote>
+                </div>
+                <div class="pt-4 border-t border-[#D9DDE1] text-sm">
+                  <p class="font-bold text-[#172B46]">Nombre de la persona</p>
+                  <p class="text-[#172B46]/75 mt-0.5">Relación con el cliente: __________</p>
+                </div>
+              </article>
+
+              <!-- Testimonio 02 -->
+              <article class="testimonial-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] elegant-card p-7 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="font-playfair text-lg font-bold text-[#B49A70]">02 · Responsabilidad</span>
+                    <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#D9DDE1]/60 text-[#172B46]">
+                      Testimonio de ejemplo
+                    </span>
+                  </div>
+                  <blockquote class="text-[#172B46] text-base leading-relaxed italic mb-6">
+                    “Se caracteriza por ser una persona comprometida y responsable. Cumple con lo que promete y demuestra ser alguien en quien se puede confiar”.
+                  </blockquote>
+                </div>
+                <div class="pt-4 border-t border-[#D9DDE1] text-sm">
+                  <p class="font-bold text-[#172B46]">Nombre de la persona</p>
+                  <p class="text-[#172B46]/75 mt-0.5">Relación con el cliente: __________</p>
+                </div>
+              </article>
+
+              <!-- Testimonio 03 -->
+              <article class="testimonial-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] elegant-card p-7 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="font-playfair text-lg font-bold text-[#B49A70]">03 · Comunicación y empatía</span>
+                    <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#D9DDE1]/60 text-[#172B46]">
+                      Testimonio de ejemplo
+                    </span>
+                  </div>
+                  <blockquote class="text-[#172B46] text-base leading-relaxed italic mb-6">
+                    “Tiene una gran capacidad para escuchar y comprender a los demás. Su forma de comunicarse genera cercanía y hace que las personas se sientan escuchadas y valoradas”.
+                  </blockquote>
+                </div>
+                <div class="pt-4 border-t border-[#D9DDE1] text-sm">
+                  <p class="font-bold text-[#172B46]">Nombre de la persona</p>
+                  <p class="text-[#172B46]/75 mt-0.5">Relación con el cliente: __________</p>
+                </div>
+              </article>
+
+              <!-- Testimonio 04 -->
+              <article class="testimonial-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] elegant-card p-7 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="font-playfair text-lg font-bold text-[#B49A70]">04 · Justicia y confianza</span>
+                    <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#D9DDE1]/60 text-[#172B46]">
+                      Testimonio de ejemplo
+                    </span>
+                  </div>
+                  <blockquote class="text-[#172B46] text-base leading-relaxed italic mb-6">
+                    “Es una persona objetiva, prudente y respetuosa al tomar decisiones. Sabe manejar la información con discreción y actuar con criterio incluso en situaciones complejas”.
+                  </blockquote>
+                </div>
+                <div class="pt-4 border-t border-[#D9DDE1] text-sm">
+                  <p class="font-bold text-[#172B46]">Nombre de la persona</p>
+                  <p class="text-[#172B46]/75 mt-0.5">Relación con el cliente: __________</p>
+                </div>
+              </article>
+
+              <!-- Testimonio 05 -->
+              <article class="testimonial-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] elegant-card p-7 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="font-playfair text-lg font-bold text-[#B49A70]">05 · Pensamiento estratégico</span>
+                    <span class="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#D9DDE1]/60 text-[#172B46]">
+                      Testimonio de ejemplo
+                    </span>
+                  </div>
+                  <blockquote class="text-[#172B46] text-base leading-relaxed italic mb-6">
+                    “Destaco su capacidad para analizar las situaciones desde diferentes perspectivas. No se queda únicamente con el problema, sino que busca comprenderlo y proponer soluciones”.
+                  </blockquote>
+                </div>
+                <div class="pt-4 border-t border-[#D9DDE1] text-sm">
+                  <p class="font-bold text-[#172B46]">Nombre de la persona</p>
+                  <p class="text-[#172B46]/75 mt-0.5">Relación con el cliente: __________</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- Puntos indicadores de navegación -->
+          <div id="carousel-dots" class="flex justify-center gap-2 mt-8"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================
+         VENTANA 1: IDENTIDAD Y ESTRATEGIA DE MARCA
+         Página independiente con sus 4 apartados exactos:
+         4.1. Misión y visión
+         4.2. Matriz DOFA (Cuadrícula 2x2 completa)
+         4.3. Públicos objetivos (2 perfiles Buyer Persona completos)
+         4.4. Logro del objetivo de marca personal y medios de comunicación (5 estrategias)
+         ====================================================================== -->
+    <section id="page-identidad-estrategia" class="page-view" aria-label="Ventana 1: Identidad y estrategia de marca">
+
+      <!-- Encabezado de Ventana 1 -->
+      <div class="bg-[#172B46] text-white py-14 border-b-4 border-[#B49A70]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">
+              Ventana 1 · Dirección Estratégica
+            </span>
+            <button onclick="navigateTo('inicio')" class="text-xs text-[#D9DDE1] hover:text-[#B49A70] underline">
+              ← Volver a la página principal
+            </button>
+          </div>
+          <h1 class="font-playfair text-3xl sm:text-5xl font-bold text-white">
+            Identidad y Estrategia de Marca
+          </h1>
+          <p class="text-[#D9DDE1] mt-3 max-w-3xl text-base sm:text-lg">
+            Fundamentos estratégicos, diagnóstico interno y externo, definición de públicos objetivos y plan de comunicación y posicionamiento.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4.1. Misión y visión -->
+      <div class="py-16 bg-white border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 01</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Misión y Visión</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta MISIÓN -->
+            <div class="rounded-2xl bg-[#172B46] text-white p-8 sm:p-10 shadow-lg border-t-4 border-[#B49A70]">
+              <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Propósito Operativo</span>
+              <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-white mt-1 mb-5">
+                MISIÓN
+              </h3>
+              <p class="text-[#D9DDE1] text-base sm:text-lg leading-relaxed">
+                Acompañar a las organizaciones en el fortalecimiento de sus personas, liderazgos y culturas empresariales, integrando una visión humana y estratégica que impulse relaciones de confianza, decisiones conscientes y crecimiento sostenible.
+              </p>
+            </div>
+
+            <!-- Tarjeta VISIÓN -->
+            <div class="rounded-2xl bg-white text-[#172B46] p-8 sm:p-10 shadow-sm border border-[#D9DDE1] border-t-4 border-t-[#172B46]">
+              <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Proyección a Futuro</span>
+              <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-[#172B46] mt-1 mb-5">
+                VISIÓN
+              </h3>
+              <p class="text-[#172B46]/90 text-base sm:text-lg leading-relaxed">
+                Ser una marca referente en el fortalecimiento humano y organizacional, reconocida por impulsar liderazgos conscientes, culturas empresariales sólidas y organizaciones capaces de evolucionar sin perder su esencia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.2. Matriz DOFA (Cuadrícula 2 × 2 completa e íntegra) -->
+      <div class="py-16 bg-[#D9DDE1]/30 border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 02</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Matriz DOFA</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- 1. FORTALEZAS -->
+            <div class="elegant-card p-7 sm:p-8 border-t-4 border-t-[#172B46]">
+              <div class="pb-4 mb-5 border-b border-[#D9DDE1]">
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">1. FORTALEZAS</h3>
+                <p class="text-sm font-bold text-[#B49A70] mt-1">Factores internos positivos.</p>
+              </div>
+              <ul class="space-y-3.5 text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                <li><strong>- Enfoque integral:</strong> combinación del desarrollo humano, el liderazgo y la estrategia empresarial.</li>
+                <li><strong>- Orientación humana:</strong> comprensión de las personas como eje fundamental del desarrollo organizacional.</li>
+                <li><strong>- Identidad fundamentada:</strong> construcción de una marca basada en valores y principios organizacionales.</li>
+                <li><strong>- Visión estratégica:</strong> interés por generar cambios que trasciendan los resultados inmediatos.</li>
+                <li><strong>- Adaptabilidad:</strong> capacidad de trabajar con diferentes organizaciones y contextos empresariales.</li>
+                <li><strong>- Enfoque relacional:</strong> importancia de la confianza, la comunicación y la construcción de relaciones duraderas.</li>
+              </ul>
+            </div>
+
+            <!-- 2. OPORTUNIDADES -->
+            <div class="elegant-card p-7 sm:p-8 border-t-4 border-t-[#B49A70]">
+              <div class="pb-4 mb-5 border-b border-[#D9DDE1]">
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">2. OPORTUNIDADES</h3>
+                <p class="text-sm font-bold text-[#B49A70] mt-1">Factores externos positivos.</p>
+              </div>
+              <ul class="space-y-3.5 text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                <li><strong>- Desarrollo organizacional:</strong> creciente necesidad empresarial de fortalecer equipos, procesos y culturas organizacionales.</li>
+                <li><strong>- Profesionalización empresarial:</strong> necesidad de mejorar estructuras, liderazgo y modelos de gestión.</li>
+                <li><strong>- Transformación cultural:</strong> organizaciones que buscan evolucionar sus formas de trabajo y adaptación al cambio.</li>
+                <li><strong>- Liderazgo consciente:</strong> interés por modelos de liderazgo que integren resultados y desarrollo humano.</li>
+                <li><strong>- Posicionamiento digital:</strong> posibilidad de construir autoridad y reconocimiento mediante contenido educativo y profesional.</li>
+                <li><strong>- Alianzas estratégicas:</strong> oportunidades de colaboración con consultores, empresarios y profesionales especializados.</li>
+              </ul>
+            </div>
+
+            <!-- 3. DEBILIDADES -->
+            <div class="elegant-card p-7 sm:p-8 border-t-4 border-t-[#B49A70]">
+              <div class="pb-4 mb-5 border-b border-[#D9DDE1]">
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">3. DEBILIDADES</h3>
+                <p class="text-sm font-bold text-[#B49A70] mt-1">Factores internos negativos.</p>
+              </div>
+              <ul class="space-y-3.5 text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                <li><strong>- Posicionamiento inicial:</strong> reconocimiento y reputación de marca todavía por construir.</li>
+                <li><strong>- Propuesta de valor pendiente de concretar:</strong> necesidad de definir con precisión los servicios y soluciones ofrecidos.</li>
+                <li><strong>- Ausencia de casos demostrables:</strong> necesidad de construir experiencias y resultados verificables.</li>
+                <li><strong>- Comunicación comercial por desarrollar:</strong> necesidad de traducir los conceptos organizacionales en mensajes claros y atractivos para el mercado.</li>
+                <li><strong>- Portafolio pendiente:</strong> falta estructurar metodologías, servicios y entregables.</li>
+                <li><strong>- Dependencia del fundador:</strong> posible concentración de la operación, el conocimiento y la toma de decisiones en una sola persona.</li>
+              </ul>
+            </div>
+
+            <!-- 4. AMENAZAS -->
+            <div class="elegant-card p-7 sm:p-8 border-t-4 border-t-[#172B46]">
+              <div class="pb-4 mb-5 border-b border-[#D9DDE1]">
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">4. AMENAZAS</h3>
+                <p class="text-sm font-bold text-[#B49A70] mt-1">Factores externos negativos.</p>
+              </div>
+              <ul class="space-y-3.5 text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                <li><strong>- Competencia especializada:</strong> presencia de consultoras y profesionales con trayectoria, reconocimiento y experiencia en el mercado.</li>
+                <li><strong>- Desconfianza empresarial:</strong> organizaciones que pueden mostrar escepticismo frente a servicios intangibles o propuestas de transformación organizacional.</li>
+                <li><strong>- Sensibilidad presupuestaria:</strong> reducción de inversiones en desarrollo organizacional y gestión humana ante dificultades económicas.</li>
+                <li><strong>- Resistencia al cambio:</strong> dificultades culturales y organizacionales para implementar nuevas prácticas y modelos de gestión.</li>
+                <li><strong>- Expectativas de resultados inmediatos:</strong> clientes que esperan transformaciones rápidas sin considerar los procesos, recursos y tiempos necesarios.</li>
+                <li><strong>- Cambios normativos, políticos y legislativos:</strong> reformas laborales, modificaciones legales, nuevas disposiciones gubernamentales y decisiones del Gobierno o el Congreso que puedan afectar el entorno empresarial, las relaciones laborales y los procesos de gestión humana.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.3. Públicos objetivos (Diseño tipo Buyer Persona con los 2 perfiles exactos) -->
+      <div class="py-16 bg-white border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 03 · Buyer Persona</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Públicos Objetivos</h2>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- PERFIL 1: SECTOR CORPORATIVO - INMOBILIARIAS -->
+            <article class="rounded-2xl border border-[#D9DDE1] overflow-hidden shadow-sm bg-white">
+              <div class="bg-[#172B46] text-white p-7 border-b-4 border-[#B49A70]">
+                <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Buyer Persona 01</span>
+                <h3 class="font-playfair text-2xl font-bold mt-1">
+                  PERFIL 1: SECTOR CORPORATIVO - INMOBILIARIAS
+                </h3>
+              </div>
+
+              <div class="p-7 space-y-6">
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest font-bold text-[#B49A70] mb-2">Descripción</h4>
+                  <p class="text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                    Empresas pertenecientes al sector inmobiliario, independientemente de su tamaño o estructura organizacional, interesadas en fortalecer sus procesos de gestión humana, relaciones laborales y desarrollo organizacional.
+                  </p>
+                </div>
+
+                <div class="bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                  <h4 class="font-playfair text-lg font-bold text-[#172B46] mb-3">Perfil demográfico</h4>
+                  <ul class="space-y-2 text-sm text-[#172B46]/90">
+                    <li><strong>- Tipo de organización:</strong> Empresas inmobiliarias.</li>
+                    <li><strong>- Ubicación:</strong> Principalmente Colombia.</li>
+                    <li><strong>- Tamaño:</strong> Pequeñas, medianas y grandes empresas.</li>
+                    <li><strong>- Sector económico:</strong> Inmobiliario.</li>
+                    <li><strong>- Decisores:</strong> Propietarios, gerentes, directores y responsables de talento humano.</li>
+                    <li><strong>- Edad de los decisores:</strong> Aproximadamente 28 a 60 años.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-playfair text-lg font-bold text-[#172B46] mb-3">Perfil psicográfico</h4>
+                  <ul class="space-y-2.5 text-sm text-[#172B46]/90 leading-relaxed">
+                    <li><strong>- Intereses:</strong> crecimiento empresarial, gestión del talento, liderazgo, productividad y desarrollo organizacional.</li>
+                    <li><strong>- Necesidades:</strong> mejorar las relaciones laborales, gestionar conflictos, fortalecer equipos y optimizar la administración del talento humano.</li>
+                    <li><strong>- Motivaciones:</strong> consolidar empresas organizadas, competitivas y con equipos comprometidos.</li>
+                    <li><strong>- Valores:</strong> responsabilidad, confianza, transparencia, profesionalismo y compromiso.</li>
+                    <li><strong>- Comportamiento:</strong> buscan soluciones prácticas, asesoría especializada y acompañamiento que contribuya al cumplimiento de sus objetivos empresariales.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <!-- PERFIL 2: EMPRESAS FAMILIARES -->
+            <article class="rounded-2xl border border-[#D9DDE1] overflow-hidden shadow-sm bg-white">
+              <div class="bg-[#172B46] text-white p-7 border-b-4 border-[#B49A70]">
+                <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Buyer Persona 02</span>
+                <h3 class="font-playfair text-2xl font-bold mt-1">
+                  PERFIL 2: EMPRESAS FAMILIARES
+                </h3>
+              </div>
+
+              <div class="p-7 space-y-6">
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest font-bold text-[#B49A70] mb-2">Descripción</h4>
+                  <p class="text-sm sm:text-base text-[#172B46]/90 leading-relaxed">
+                    Organizaciones en las que una familia participa significativamente en la propiedad, administración o dirección del negocio, y que buscan fortalecer sus relaciones internas y profesionalizar su gestión empresarial.
+                  </p>
+                </div>
+
+                <div class="bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                  <h4 class="font-playfair text-lg font-bold text-[#172B46] mb-3">Perfil demográfico</h4>
+                  <ul class="space-y-2 text-sm text-[#172B46]/90">
+                    <li><strong>- Tipo de organización:</strong> Empresas familiares.</li>
+                    <li><strong>- Ubicación:</strong> Principalmente Colombia.</li>
+                    <li><strong>- Tamaño:</strong> Micro, pequeñas, medianas y grandes empresas.</li>
+                    <li><strong>- Sector económico:</strong> Diversos sectores empresariales.</li>
+                    <li><strong>- Decisores:</strong> Fundadores, propietarios, sucesores, gerentes y miembros de la familia directiva.</li>
+                    <li><strong>- Edad de los decisores:</strong> Aproximadamente 30 a 65 años.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-playfair text-lg font-bold text-[#172B46] mb-3">Perfil psicográfico</h4>
+                  <ul class="space-y-2.5 text-sm text-[#172B46]/90 leading-relaxed">
+                    <li><strong>- Intereses:</strong> continuidad empresarial, crecimiento del negocio, liderazgo, organización interna y sucesión generacional.</li>
+                    <li><strong>- Necesidades:</strong> establecer responsabilidades, mejorar la comunicación, gestionar conflictos familiares y laborales y profesionalizar los procesos.</li>
+                    <li><strong>- Motivaciones:</strong> preservar el legado familiar, garantizar la sostenibilidad del negocio y fortalecer las relaciones entre sus integrantes.</li>
+                    <li><strong>- Valores:</strong> confianza, compromiso, respeto, sentido de pertenencia, tradición y responsabilidad.</li>
+                    <li><strong>- Comportamiento:</strong> valoran las relaciones cercanas, la confidencialidad, la confianza y las soluciones que respeten la historia y esencia de la organización.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 4.4. Logro del objetivo de marca personal y medios de comunicación -->
+      <div class="py-16 bg-[#D9DDE1]/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 04</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">
+              Logro del Objetivo de Marca Personal y Medios de Comunicación
+            </h2>
+            <p class="text-lg font-bold text-[#172B46] mt-3">
+              ESTRATEGIA DE COMUNICACIÓN Y POSICIONAMIENTO
+            </p>
+          </div>
+
+          <div class="space-y-6">
+
+            <!-- 1. Presencia en redes profesionales -->
+            <div class="elegant-card p-7 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-5">
+                <span class="inline-block px-3 py-1 rounded-full bg-[#172B46] text-[#B49A70] text-xs font-bold mb-2">
+                  Medio: LinkedIn
+                </span>
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">
+                  1. Presencia en redes profesionales
+                </h3>
+                <p class="text-sm sm:text-base text-[#172B46]/85 mt-3 leading-relaxed">
+                  Construir una presencia profesional mediante publicaciones sobre liderazgo, gestión humana, comportamiento organizacional y cultura empresarial.
+                </p>
+              </div>
+              <div class="lg:col-span-7 bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-[#172B46] mb-3">Acciones:</h4>
+                <ul class="space-y-2 text-sm text-[#172B46]/90">
+                  <li>- Optimizar el perfil profesional y presentar claramente la propuesta de valor.</li>
+                  <li>- Compartir reflexiones y conocimientos sobre liderazgo y gestión empresarial.</li>
+                  <li>- Publicar contenido educativo relacionado con los desafíos de las inmobiliarias y empresas familiares.</li>
+                  <li>- Interactuar con empresarios, directivos y profesionales de gestión humana.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 02. Creación de contenido de valor -->
+            <div class="elegant-card p-7 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-5">
+                <span class="inline-block px-3 py-1 rounded-full bg-[#172B46] text-[#B49A70] text-xs font-bold mb-2">
+                  Medios: Instagram
+                </span>
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">
+                  02. Creación de contenido de valor
+                </h3>
+                <p class="text-sm sm:text-base text-[#172B46]/85 mt-3 leading-relaxed">
+                  Desarrollar contenido que permita demostrar conocimientos, transmitir experiencia y generar reconocimiento profesional.
+                </p>
+              </div>
+              <div class="lg:col-span-7 bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-[#172B46] mb-3">Acciones:</h4>
+                <ul class="space-y-2 text-sm text-[#172B46]/90">
+                  <li>- Crear publicaciones educativas sobre gestión de conflictos y relaciones laborales.</li>
+                  <li>- Compartir recomendaciones para fortalecer equipos de trabajo.</li>
+                  <li>- Elaborar contenido sobre liderazgo, comunicación y toma de decisiones.</li>
+                  <li>- Desarrollar infografías, videos cortos y carruseles informativos.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 03. Networking y relacionamiento empresarial -->
+            <div class="elegant-card p-7 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-5">
+                <span class="inline-block px-3 py-1 rounded-full bg-[#172B46] text-[#B49A70] text-xs font-bold mb-2">
+                  Medios: eventos empresariales y encuentros profesionales
+                </span>
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">
+                  03. Networking y relacionamiento empresarial
+                </h3>
+                <p class="text-sm sm:text-base text-[#172B46]/85 mt-3 leading-relaxed">
+                  Construir relaciones con personas y organizaciones que puedan convertirse en aliados, contactos estratégicos o clientes potenciales.
+                </p>
+              </div>
+              <div class="lg:col-span-7 bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-[#172B46] mb-3">Acciones:</h4>
+                <ul class="space-y-2 text-sm text-[#172B46]/90">
+                  <li>- Participar en encuentros y eventos del sector inmobiliario.</li>
+                  <li>- Establecer relaciones con empresarios y propietarios de empresas familiares.</li>
+                  <li>- Asistir a espacios de formación y networking empresarial.</li>
+                  <li>- Generar alianzas con profesionales y organizaciones afines.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 04. Comunicación directa y comercial -->
+            <div class="elegant-card p-7 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-5">
+                <span class="inline-block px-3 py-1 rounded-full bg-[#172B46] text-[#B49A70] text-xs font-bold mb-2">
+                  Medios: correo electrónico, WhatsApp Business y reuniones presenciales o virtuales
+                </span>
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">
+                  04. Comunicación directa y comercial
+                </h3>
+                <p class="text-sm sm:text-base text-[#172B46]/85 mt-3 leading-relaxed">
+                  Establecer canales de comunicación directa para presentar los servicios y generar oportunidades comerciales.
+                </p>
+              </div>
+              <div class="lg:col-span-7 bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-[#172B46] mb-3">Acciones:</h4>
+                <ul class="space-y-2 text-sm text-[#172B46]/90">
+                  <li>- Contactar empresas potencialmente interesadas en los servicios.</li>
+                  <li>- Presentar propuestas de acompañamiento organizacional.</li>
+                  <li>- Compartir portafolios de servicios y presentaciones profesionales.</li>
+                  <li>- Realizar reuniones para identificar necesidades y oportunidades de intervención.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 05. Construcción de credibilidad y reputación -->
+            <div class="elegant-card p-7 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div class="lg:col-span-5">
+                <span class="inline-block px-3 py-1 rounded-full bg-[#172B46] text-[#B49A70] text-xs font-bold mb-2">
+                  Medios: talleres, conferencias y espacios de formación
+                </span>
+                <h3 class="font-playfair text-2xl font-bold text-[#172B46]">
+                  05. Construcción de credibilidad y reputación
+                </h3>
+                <p class="text-sm sm:text-base text-[#172B46]/85 mt-3 leading-relaxed">
+                  Demostrar conocimientos y capacidades mediante experiencias que permitan generar confianza y reconocimiento profesional.
+                </p>
+              </div>
+              <div class="lg:col-span-7 bg-[#D9DDE1]/25 rounded-xl p-5 border border-[#D9DDE1]">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-[#172B46] mb-3">Acciones:</h4>
+                <ul class="space-y-2 text-sm text-[#172B46]/90">
+                  <li>- Realizar talleres sobre liderazgo, comunicación y resolución de conflictos.</li>
+                  <li>- Participar como invitado en espacios académicos y empresariales.</li>
+                  <li>- Compartir aprendizajes y experiencias profesionales.</li>
+                  <li>- Recopilar testimonios y experiencias de clientes, con su autorización.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================
+         VENTANA 2: IDENTIDAD VISUAL
+         Presentación de identidad gráfica con sus 4 apartados exactos:
+         5.1. Logotipo (Primer elemento, imagen real reemplazable sobre distintos fondos)
+         5.2. Paleta de colores (#172B46, #B49A70, #D9DDE1, #FFFFFF)
+         5.3. Tipografías (Lato y Playfair Display)
+         5.4. Slogan ("Liderazgo con criterio." protagonista + 3 alternativas)
+         ====================================================================== -->
+    <section id="page-identidad-visual" class="page-view" aria-label="Ventana 2: Identidad visual">
+
+      <!-- Encabezado de Ventana 2 -->
+      <div class="bg-[#172B46] text-white py-14 border-b-4 border-[#B49A70]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">
+              Ventana 2 · Sistema Gráfico y Verbal
+            </span>
+            <button onclick="navigateTo('inicio')" class="text-xs text-[#D9DDE1] hover:text-[#B49A70] underline">
+              ← Volver a la página principal
+            </button>
+          </div>
+          <h1 class="font-playfair text-3xl sm:text-5xl font-bold text-white">
+            Identidad Visual
+          </h1>
+          <p class="text-[#D9DDE1] mt-3 max-w-3xl text-base sm:text-lg">
+            Manual visual de la marca personal: logotipo, paleta cromática oficial, jerarquía tipográfica y arquitectura de slogan.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5.1. Logotipo (Primer elemento presentado en esta ventana) -->
+      <div class="py-16 bg-white border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 01</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Logotipo</h2>
+            <p class="text-sm text-[#172B46]/80 mt-2">
+              Archivo gráfico independiente (<code class="bg-[#D9DDE1]/50 px-2 py-0.5 rounded">imagenes/logo.png</code> o <code class="bg-[#D9DDE1]/50 px-2 py-0.5 rounded">imagenes/logo.svg</code>) preparado para ser sustituido por el diseño definitivo. La explicación definitiva del logotipo se incorporará posteriormente.
+            </p>
+          </div>
+
+          <!-- Exhibición del logotipo sobre distintos fondos de la identidad visual -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Fondo Blanco (#FFFFFF) -->
+            <div class="rounded-2xl border border-[#D9DDE1] bg-white p-8 flex flex-col items-center justify-between shadow-sm">
+              <span class="text-xs uppercase tracking-widest text-[#172B46]/70 font-bold self-start">Versión sobre Fondo Blanco (#FFFFFF)</span>
+              <div class="my-8 w-40 h-40 flex items-center justify-center">
+                <img id="brand-logo-light" src="" alt="Logotipo sobre fondo blanco" class="w-full h-full object-contain" />
+              </div>
+              <span class="text-xs text-[#172B46]/70">Ruta: <code>imagenes/logo.png</code></span>
+            </div>
+
+            <!-- Fondo Azul Profundo (#172B46) -->
+            <div class="rounded-2xl border border-[#172B46] bg-[#172B46] p-8 flex flex-col items-center justify-between shadow-md">
+              <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold self-start">Versión sobre Azul Profundo (#172B46)</span>
+              <div class="my-8 w-40 h-40 flex items-center justify-center">
+                <img id="brand-logo-dark" src="" alt="Logotipo sobre fondo azul profundo" class="w-full h-full object-contain" />
+              </div>
+              <span class="text-xs text-[#D9DDE1]">Uso institucional principal</span>
+            </div>
+
+            <!-- Fondo Gris Claro (#D9DDE1) -->
+            <div class="rounded-2xl border border-[#D9DDE1] bg-[#D9DDE1] p-8 flex flex-col items-center justify-between shadow-sm">
+              <span class="text-xs uppercase tracking-widest text-[#172B46] font-bold self-start">Versión sobre Gris Claro (#D9DDE1)</span>
+              <div class="my-8 w-40 h-40 flex items-center justify-center">
+                <img id="brand-logo-gray" src="" alt="Logotipo sobre fondo gris claro" class="w-full h-full object-contain" />
+              </div>
+              <span class="text-xs text-[#172B46]/80">Uso editorial y papelería</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2. Paleta de colores (Códigos hexadecimales exactos + muestras de aplicación) -->
+      <div class="py-16 bg-[#D9DDE1]/25 border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 02</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Paleta de Colores</h2>
+            <p class="text-sm text-[#172B46]/80 mt-2">
+              La explicación definitiva de cada color se incorporará posteriormente.
+            </p>
+          </div>
+
+          <!-- 4 Muestras cromáticas exactas -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+            <!-- Azul profundo: #172B46 -->
+            <div class="rounded-2xl overflow-hidden border border-[#D9DDE1] bg-white shadow-sm">
+              <div class="h-36 bg-[#172B46] flex items-end p-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-white/90">Color Primario</span>
+              </div>
+              <div class="p-5">
+                <h3 class="font-playfair text-xl font-bold text-[#172B46]">Azul profundo</h3>
+                <p class="font-mono text-sm font-bold text-[#B49A70] mt-1">#172B46</p>
+                <p class="text-xs text-[#172B46]/70 mt-3 italic">[Espacio reservado para la explicación definitiva del color]</p>
+              </div>
+            </div>
+
+            <!-- Dorado beige: #B49A70 -->
+            <div class="rounded-2xl overflow-hidden border border-[#D9DDE1] bg-white shadow-sm">
+              <div class="h-36 bg-[#B49A70] flex items-end p-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#172B46]">Color de Acento</span>
+              </div>
+              <div class="p-5">
+                <h3 class="font-playfair text-xl font-bold text-[#172B46]">Dorado beige</h3>
+                <p class="font-mono text-sm font-bold text-[#172B46] mt-1">#B49A70</p>
+                <p class="text-xs text-[#172B46]/70 mt-3 italic">[Espacio reservado para la explicación definitiva del color]</p>
+              </div>
+            </div>
+
+            <!-- Gris claro: #D9DDE1 -->
+            <div class="rounded-2xl overflow-hidden border border-[#D9DDE1] bg-white shadow-sm">
+              <div class="h-36 bg-[#D9DDE1] flex items-end p-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#172B46]">Color Secundario</span>
+              </div>
+              <div class="p-5">
+                <h3 class="font-playfair text-xl font-bold text-[#172B46]">Gris claro</h3>
+                <p class="font-mono text-sm font-bold text-[#172B46] mt-1">#D9DDE1</p>
+                <p class="text-xs text-[#172B46]/70 mt-3 italic">[Espacio reservado para la explicación definitiva del color]</p>
+              </div>
+            </div>
+
+            <!-- Blanco: #FFFFFF -->
+            <div class="rounded-2xl overflow-hidden border border-[#D9DDE1] bg-white shadow-sm">
+              <div class="h-36 bg-[#FFFFFF] border-b border-[#D9DDE1] flex items-end p-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#172B46]">Fondo Base</span>
+              </div>
+              <div class="p-5">
+                <h3 class="font-playfair text-xl font-bold text-[#172B46]">Blanco</h3>
+                <p class="font-mono text-sm font-bold text-[#172B46] mt-1">#FFFFFF</p>
+                <p class="text-xs text-[#172B46]/70 mt-3 italic">[Espacio reservado para la explicación definitiva del color]</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Ejemplos de aplicación visual de la paleta en componentes UI -->
+          <div class="bg-white rounded-2xl p-7 sm:p-8 border border-[#D9DDE1]">
+            <h3 class="font-playfair text-xl font-bold text-[#172B46] mb-5">
+              Aplicación de la Paleta en Elementos de Interfaz
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="p-5 rounded-xl bg-[#172B46] text-white space-y-3">
+                <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Encabezados y Fondos Oscuros</span>
+                <p class="font-playfair text-lg font-semibold">Contraste de autoridad y sobriedad</p>
+                <span class="inline-block px-4 py-2 rounded-lg bg-[#B49A70] text-[#172B46] text-xs font-bold">Botón de acción en #B49A70</span>
+              </div>
+              <div class="p-5 rounded-xl bg-[#FFFFFF] border border-[#D9DDE1] text-[#172B46] space-y-3">
+                <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Tarjetas Editoriales</span>
+                <p class="font-playfair text-lg font-semibold">Lectura limpia sobre blanco puro</p>
+                <span class="inline-block px-4 py-2 rounded-lg bg-[#172B46] text-white text-xs font-bold">Botón primario en #172B46</span>
+              </div>
+              <div class="p-5 rounded-xl bg-[#D9DDE1] text-[#172B46] space-y-3">
+                <span class="text-xs uppercase tracking-widest text-[#172B46] font-bold">Bloques de Soporte</span>
+                <p class="font-playfair text-lg font-semibold">Equilibrio visual y separación sutil</p>
+                <span class="inline-block px-4 py-2 rounded-lg bg-white text-[#172B46] border border-[#172B46] text-xs font-bold">Etiqueta en #FFFFFF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3. Tipografías (Lato y Playfair Display) -->
+      <div class="py-16 bg-white border-b border-[#D9DDE1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 03</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Tipografías</h2>
+            <p class="text-sm text-[#172B46]/80 mt-2">
+              La explicación definitiva de las tipografías se incorporará posteriormente.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Tipografía Principal: LATO -->
+            <div class="elegant-card p-8 space-y-6">
+              <div class="flex items-center justify-between border-b border-[#D9DDE1] pb-4">
+                <div>
+                  <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Tipografía Principal</span>
+                  <h3 class="text-3xl font-black text-[#172B46] mt-1" style="font-family: 'Lato', sans-serif;">LATO</h3>
+                </div>
+                <span class="text-4xl font-bold text-[#D9DDE1]" style="font-family: 'Lato', sans-serif;">Aa</span>
+              </div>
+
+              <div class="space-y-4" style="font-family: 'Lato', sans-serif;">
+                <div>
+                  <span class="text-xs text-[#172B46]/60 uppercase">Subtítulo / Navegación (Lato Bold 700)</span>
+                  <p class="text-lg font-bold text-[#172B46]">Claridad estructural, legibilidad y cercanía profesional.</p>
+                </div>
+                <div>
+                  <span class="text-xs text-[#172B46]/60 uppercase">Texto Descriptivo (Lato Regular 400)</span>
+                  <p class="text-base text-[#172B46]/90 leading-relaxed">
+                    Utilizada en párrafos informativos, descripciones estratégicas, botones de navegación y contenidos extensos para garantizar una lectura fluida en cualquier dispositivo.
+                  </p>
+                </div>
+                <p class="text-sm tracking-widest text-[#172B46]/70 pt-2 border-t border-[#D9DDE1]">
+                  ABCDEFGHIJKLMNÑOPQRSTUVWXYZ · abcdefghijklmnñopqrstuvwxyz · 0123456789
+                </p>
+              </div>
+            </div>
+
+            <!-- Tipografía Secundaria: Playfair Display -->
+            <div class="elegant-card p-8 space-y-6">
+              <div class="flex items-center justify-between border-b border-[#D9DDE1] pb-4">
+                <div>
+                  <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Tipografía Secundaria</span>
+                  <h3 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Playfair Display</h3>
+                </div>
+                <span class="font-playfair text-4xl font-bold text-[#D9DDE1]">Aa</span>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <span class="text-xs text-[#172B46]/60 uppercase">Títulos Principales (Playfair Display Bold 700)</span>
+                  <p class="font-playfair text-2xl font-bold text-[#172B46]">Distinción editorial, criterio y solidez institucional.</p>
+                </div>
+                <div>
+                  <span class="text-xs text-[#172B46]/60 uppercase">Frases Destacadas / Slogan (Playfair Display Italic)</span>
+                  <p class="font-playfair italic text-lg text-[#B49A70]">
+                    «Liderazgo con criterio.»
+                  </p>
+                </div>
+                <p class="font-playfair text-sm tracking-wider text-[#172B46]/70 pt-2 border-t border-[#D9DDE1]">
+                  ABCDEFGHIJKLMNÑOPQRSTUVWXYZ · abcdefghijklmnñopqrstuvwxyz · 0123456789
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.4. Slogan -->
+      <div class="py-16 bg-[#D9DDE1]/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 04</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Slogan</h2>
+          </div>
+
+          <!-- Slogan Principal Protagonista -->
+          <div class="rounded-2xl bg-[#172B46] text-white p-8 sm:p-12 shadow-xl border-2 border-[#B49A70] mb-8">
+            <span class="inline-block px-3 py-1 rounded-full bg-[#B49A70] text-[#172B46] text-xs font-bold uppercase tracking-widest mb-4">
+              Slogan Principal Seleccionado
+            </span>
+            <p class="font-playfair text-3xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+              Liderazgo con criterio.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-white/15 text-[#D9DDE1] text-base">
+              <p>Su enfoque es liderazgo y criterio.</p>
+              <p>Transmite capacidad de dirección, objetividad y seguridad en la toma de decisiones.</p>
+            </div>
+          </div>
+
+          <!-- Alternativas de Slogan -->
+          <div>
+            <h3 class="text-sm uppercase tracking-widest font-bold text-[#172B46] mb-4">
+              Alternativas de Slogan
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="elegant-card p-6 border-l-4 border-l-[#B49A70]">
+                <span class="text-xs text-[#B49A70] font-bold">Alternativa 01</span>
+                <p class="font-playfair text-xl font-semibold text-[#172B46] mt-2">
+                  Liderar con propósito, decidir con criterio.
+                </p>
+              </div>
+              <div class="elegant-card p-6 border-l-4 border-l-[#B49A70]">
+                <span class="text-xs text-[#B49A70] font-bold">Alternativa 02</span>
+                <p class="font-playfair text-xl font-semibold text-[#172B46] mt-2">
+                  El valor de un liderazgo consciente.
+                </p>
+              </div>
+              <div class="elegant-card p-6 border-l-4 border-l-[#B49A70]">
+                <span class="text-xs text-[#B49A70] font-bold">Alternativa 03</span>
+                <p class="font-playfair text-xl font-semibold text-[#172B46] mt-2">
+                  Dirección, criterio y compromiso.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================================
+         VENTANA 3: PERFIL Y PROYECCIÓN PERSONAL
+         Contiene exclusivamente sus 2 apartados:
+         6.1. Hoja de vida (Marco elegante para incorporar imagen real sin inventar datos)
+         6.2. Mapa de sueños ("SUEÑA EN GRANDE" central + 7 categorías exactas)
+         ====================================================================== -->
+    <section id="page-perfil-proyeccion" class="page-view" aria-label="Ventana 3: Perfil y proyección personal">
+
+      <!-- Encabezado de Ventana 3 -->
+      <div class="bg-[#172B46] text-white py-14 border-b-4 border-[#B49A70]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">
+              Ventana 3 · Trayectoria y Visión Personal
+            </span>
+            <button onclick="navigateTo('inicio')" class="text-xs text-[#D9DDE1] hover:text-[#B49A70] underline">
+              ← Volver a la página principal
+            </button>
+          </div>
+          <h1 class="font-playfair text-3xl sm:text-5xl font-bold text-white">
+            Perfil y Proyección Personal
+          </h1>
+          <p class="text-[#D9DDE1] mt-3 max-w-3xl text-base sm:text-lg">
+            Presentación visual de la hoja de vida y proyección integral de metas personales a través del mapa de sueños.
+          </p>
+        </div>
+      </div>
+
+      <!-- 6.1. Hoja de vida (Espacio preparado para incorporar imagen real reemplazable) -->
+      <div class="py-16 bg-white border-b border-[#D9DDE1]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 01</span>
+            <h2 class="font-playfair text-3xl font-bold text-[#172B46] mt-1">Hoja de Vida</h2>
+            <p class="text-sm text-[#172B46]/80 mt-2 max-w-2xl mx-auto">
+              Marco de presentación profesional preparado para incorporar el archivo de imagen definitivo (<code class="bg-[#D9DDE1]/50 px-2 py-0.5 rounded">imagenes/hoja-de-vida.jpg</code>).
+            </p>
+          </div>
+
+          <!-- Estructura visual elegante alrededor de la imagen de la Hoja de Vida -->
+          <div class="rounded-2xl bg-[#D9DDE1]/30 p-4 sm:p-8 border-2 border-[#B49A70]/60 shadow-lg">
+            <div class="bg-white rounded-xl overflow-hidden border border-[#D9DDE1] shadow-inner">
+              <!-- RUTA REEMPLAZABLE: imagenes/hoja-de-vida.jpg -->
+              <img id="resume-preview-img"
+                   src=""
+                   alt="Espacio reservado para la imagen de la Hoja de Vida del titular"
+                   class="w-full h-auto block" />
+            </div>
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-[#172B46]/80 px-2">
+              <span>Archivo reemplazable: <strong>imagenes/hoja-de-vida.jpg</strong></span>
+              <span>Formato compatible: JPG, PNG o WEBP de alta resolución</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.2. Mapa de sueños ("SUEÑA EN GRANDE" central + 7 categorías exactas) -->
+      <div class="py-20 bg-[#D9DDE1]/25">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs uppercase tracking-widest text-[#B49A70] font-bold">Apartado 02 · Proyección Integral</span>
+            <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-[#172B46] mt-1">
+              Mapa de Sueños
+            </h2>
+            <p class="text-sm text-[#172B46]/75 mt-2">
+              Contenido ilustrativo provisional organizado en siete dimensiones de crecimiento personal, fácilmente editable para incorporar objetivos específicos en el futuro.
+            </p>
+          </div>
+
+          <!-- Frase Central Destacada: SUEÑA EN GRANDE -->
+          <div class="max-w-2xl mx-auto mb-12">
+            <div class="rounded-2xl bg-[#172B46] text-white p-8 sm:p-10 text-center shadow-xl border-2 border-[#B49A70] relative">
+              <span class="block text-xs uppercase tracking-[0.25em] text-[#B49A70] font-bold mb-2">
+                Núcleo de Proyección Personal
+              </span>
+              <h3 class="font-playfair text-3xl sm:text-5xl font-bold tracking-wider text-white">
+                SUEÑA EN GRANDE
+              </h3>
+              <div class="gold-divider mx-auto mt-4"></div>
+            </div>
+          </div>
+
+          <!-- Distribución de los 7 recuadros visuales exactos alrededor del núcleo -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- 1. Salud y bienestar -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#B49A70] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">01 · Dimensión Vital</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  1. Salud y bienestar.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Mantener hábitos saludables, equilibrio físico y mental, gestión consciente de la energía y bienestar integral como base para liderar con serenidad.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 2. Carrera y negocios -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#172B46] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">02 · Propósito Profesional</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  2. Carrera y negocios.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Consolidar la marca personal como referente en desarrollo humano, liderazgo consciente y acompañamiento estratégico para organizaciones y empresas familiares.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 3. Dinero y finanzas -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#B49A70] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">03 · Solidez y Libertad</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  3. Dinero y finanzas.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Construir estabilidad financiera sostenible, planificación patrimonial responsable y recursos que respalden proyectos de crecimiento e inversión.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 4. Aprendizaje y creatividad -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#172B46] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">04 · Evolución Continua</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  4. Aprendizaje y creatividad.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Cultivar la formación permanente en comportamiento humano, estrategia organizacional, metodologías innovadoras y creación de contenido educativo.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 5. Contribución y propósito -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#B49A70] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">05 · Impacto Trascendente</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  5. Contribución y propósito.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Generar un impacto positivo y duradero en las personas, los equipos de trabajo y las organizaciones, promoviendo entornos laborales más humanos y justos.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 6. Viajes y aventuras -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#172B46] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">06 · Nuevos Horizontes</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  6. Viajes y aventuras.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Conocer nuevas culturas, ampliar la perspectiva del mundo y vivir experiencias enriquecedoras que inspiren crecimiento personal y profesional.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+            <!-- 7. Amor y relaciones (Centrada en la fila inferior en desktop) -->
+            <article class="elegant-card p-7 border-t-4 border-t-[#B49A70] flex flex-col justify-between lg:col-start-2">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#B49A70]">07 · Vínculos Genuinos</span>
+                  <span class="w-8 h-8 rounded-lg bg-[#172B46] text-[#B49A70] flex items-center justify-center text-sm font-bold">✦</span>
+                </div>
+                <h4 class="font-playfair text-xl font-bold text-[#172B46] mb-3">
+                  7. Amor y relaciones.
+                </h4>
+                <p class="text-sm text-[#172B46]/85 leading-relaxed">
+                  [Contenido ilustrativo provisional] Fortalecer relaciones familiares, afectivas y de amistad basadas en el respeto, la empatía, la confianza y el tiempo de calidad compartido.
+                </p>
+              </div>
+              <span class="mt-5 pt-3 border-t border-[#D9DDE1] text-[11px] uppercase tracking-wider text-[#172B46]/60">
+                Espacio editable · Metas personales
+              </span>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA INSTITUCIONAL (Sin sección de contacto, según indicaciones)
+       ======================================================================== -->
+  <footer class="bg-[#172B46] text-white border-t border-[#B49A70]/40 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/15">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-lg bg-white/10 border border-[#B49A70]/50 p-1.5 flex items-center justify-center">
+            <img id="footer-logo-img" src="" alt="Logotipo de marca personal" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <p class="font-playfair text-xl font-bold text-white">[Nombre del Titular]</p>
+            <p class="font-playfair italic text-sm text-[#B49A70]">Liderazgo con criterio.</p>
+          </div>
+        </div>
+
+        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#D9DDE1]" aria-label="Navegación pie de página">
+          <button onclick="navigateTo('inicio')" class="hover:text-[#B49A70] transition">Inicio</button>
+          <button onclick="navigateTo('identidad-estrategia')" class="hover:text-[#B49A70] transition">Identidad y estrategia de marca</button>
+          <button onclick="navigateTo('identidad-visual')" class="hover:text-[#B49A70] transition">Identidad visual</button>
+          <button onclick="navigateTo('perfil-proyeccion')" class="hover:text-[#B49A70] transition">Perfil y proyección personal</button>
+        </nav>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#D9DDE1]/75">
+        <p>© 2026 Marca Personal · Todos los derechos reservados.</p>
+        <p>Estructura preparada para despliegue en GitHub y Netlify.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       LÓGICA DE NAVEGACIÓN, RECURSOS GRÁFICOS REEMPLAZABLES Y CARRUSEL
+       ======================================================================== -->
+  <script>
+    /**
+     * CONFIGURACIÓN DE RUTAS DE IMÁGENES REEMPLAZABLES
+     * Cuando subas tus archivos reales a GitHub/Netlify en la carpeta "imagenes/",
+     * el sitio cargará automáticamente tus archivos reales; mientras tanto, muestra
+     * los recursos gráficos provisionales generados vectorialmente.
+     */
+    const BRAND_ASSETS = {
+      logoPath: 'imagenes/logo.png',
+      profilePhotoPath: 'imagenes/foto-perfil.jpg',
+      resumeImagePath: 'imagenes/hoja-de-vida.jpg'
+    };
+
+    // 1. Generación de Logotipo Gráfico Provisional (SVG real independiente, no solo texto)
+    function createProvisionalLogoURI(variant = 'light') {
+      const strokeMain = variant === 'dark' ? '#FFFFFF' : '#172B46';
+      const goldAccent = '#B49A70';
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+          <rect x="14" y="14" width="172" height="172" rx="28" fill="none" stroke="${goldAccent}" stroke-width="4"/>
+          <polygon points="100,34 156,66 156,134 100,166 44,134 44,66" fill="none" stroke="${strokeMain}" stroke-width="4"/>
+          <line x1="100" y1="34" x2="100" y2="166" stroke="${goldAccent}" stroke-width="3"/>
+          <circle cx="100" cy="100" r="22" fill="none" stroke="${strokeMain}" stroke-width="4"/>
+          <circle cx="100" cy="100" r="6" fill="${goldAccent}"/>
+        </svg>
+      `.trim();
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    // 2. Generación de Imagen Provisional para Fotografía Profesional (Sin inventar rostro)
+    function createProvisionalProfileURI() {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+          <defs>
+            <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#172B46"/>
+              <stop offset="100%" stop-color="#223E63"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="750" fill="url(#bgGrad)"/>
+          <rect x="28" y="28" width="544" height="694" rx="20" fill="none" stroke="#B49A70" stroke-width="2" stroke-dasharray="10 8"/>
+          <circle cx="300" cy="275" r="78" fill="none" stroke="#B49A70" stroke-width="3"/>
+          <path d="M165 520 C165 425, 435 425, 435 520" fill="none" stroke="#B49A70" stroke-width="3"/>
+          <text x="300" y="590" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, serif" font-size="24" font-weight="bold">
+            ESPACIO PARA FOTOGRAFÍA
+          </text>
+          <text x="300" y="625" text-anchor="middle" fill="#D9DDE1" font-family="Arial, sans-serif" font-size="16">
+            Imagen profesional del titular (Reemplazable)
+          </text>
+        </svg>
+      `.trim();
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    // 3. Generación de Imagen Provisional para Hoja de Vida (Sin inventar experiencia)
+    function createProvisionalResumeURI() {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" width="900" height="1120">
+          <rect width="900" height="1120" fill="#FFFFFF"/>
+          <rect x="0" y="0" width="900" height="180" fill="#172B46"/>
+          <rect x="0" y="180" width="900" height="8" fill="#B49A70"/>
+          <circle cx="130" cy="90" r="46" fill="none" stroke="#B49A70" stroke-width="3"/>
+          <rect x="210" y="62" width="360" height="22" rx="4" fill="#FFFFFF" opacity="0.9"/>
+          <rect x="210" y="100" width="240" height="14" rx="4" fill="#B49A70" opacity="0.85"/>
+
+          <rect x="64" y="240" width="772" height="810" rx="16" fill="#F8F9FA" stroke="#D9DDE1" stroke-width="2" stroke-dasharray="12 8"/>
+          <text x="450" y="560" text-anchor="middle" fill="#172B46" font-family="Georgia, serif" font-size="32" font-weight="bold">
+            ESPACIO RESERVADO PARA HOJA DE VIDA
+          </text>
+          <text x="450" y="610" text-anchor="middle" fill="#172B46" opacity="0.75" font-family="Arial, sans-serif" font-size="20">
+            Sustituya este recurso por la imagen definitiva en: imagenes/hoja-de-vida.jpg
+          </text>
+          <line x1="280" y1="650" x2="620" y2="650" stroke="#B49A70" stroke-width="3"/>
+        </svg>
+      `.trim();
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    // Asignación con respaldo automático (si existe el archivo local en GitHub/Netlify lo usa, si no usa el provisional)
+    function attachImageWithFallback(imgElement, realPath, fallbackURI) {
+      if (!imgElement) return;
+      imgElement.onerror = function () {
+        this.onerror = null;
+        this.src = fallbackURI;
+      };
+      imgElement.src = realPath;
+    }
+
+    // Inicializar recursos visuales
+    function initBrandAssets() {
+      const logoDarkFallback = createProvisionalLogoURI('dark');
+      const logoLightFallback = createProvisionalLogoURI('light');
+
+      attachImageWithFallback(document.getElementById('navbar-logo-img'), BRAND_ASSETS.logoPath, logoDarkFallback);
+      attachImageWithFallback(document.getElementById('footer-logo-img'), BRAND_ASSETS.logoPath, logoDarkFallback);
+      attachImageWithFallback(document.getElementById('brand-logo-light'), BRAND_ASSETS.logoPath, logoLightFallback);
+      attachImageWithFallback(document.getElementById('brand-logo-dark'), BRAND_ASSETS.logoPath, logoDarkFallback);
+      attachImageWithFallback(document.getElementById('brand-logo-gray'), BRAND_ASSETS.logoPath, logoLightFallback);
+
+      attachImageWithFallback(document.getElementById('hero-profile-img'), BRAND_ASSETS.profilePhotoPath, createProvisionalProfileURI());
+      attachImageWithFallback(document.getElementById('resume-preview-img'), BRAND_ASSETS.resumeImagePath, createProvisionalResumeURI());
+    }
+
+    /**
+     * NAVEGACIÓN ENTRE LAS 4 PÁGINAS INDEPENDIENTES
+     */
+    const VALID_PAGES = ['inicio', 'identidad-estrategia', 'identidad-visual', 'perfil-proyeccion'];
+
+    function navigateTo(pageId, updateHash = true) {
+      if (!VALID_PAGES.includes(pageId)) pageId = 'inicio';
+
+      // Ocultar todas las páginas y activar únicamente la solicitada
+      document.querySelectorAll('.page-view').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      const targetSection = document.getElementById('page-' + pageId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      // Actualizar estado activo en barra superior y menú hamburguesa
+      document.querySelectorAll('[data-nav]').forEach(btn => {
+        if (btn.getAttribute('data-nav') === pageId) {
+          btn.classList.add('active-nav');
+        } else {
+          btn.classList.remove('active-nav');
+        }
+      });
+
+      // Cerrar menú hamburguesa si está abierto
+      closeMobileMenu();
+
+      // Actualizar URL hash para compatibilidad con enlaces directos en Netlify/GitHub
+      if (updateHash) {
+        history.pushState({ page: pageId }, '', '#' + pageId);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      triggerScrollReveal();
+    }
+
+    // Control del Menú Hamburguesa
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const btn = document.getElementById('hamburger-btn');
+      const iconOpen = document.getElementById('icon-menu-open');
+      const iconClose = document.getElementById('icon-menu-close');
+
+      const isHidden = drawer.classList.contains('hidden');
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        closeMobileMenu();
+      }
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const btn = document.getElementById('hamburger-btn');
+      const iconOpen = document.getElementById('icon-menu-open');
+      const iconClose = document.getElementById('icon-menu-close');
+
+      if (!drawer.classList.contains('hidden')) {
+        drawer.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    }
+
+    /**
+     * CARRUSEL DE TESTIMONIOS (5 TARJETAS)
+     */
+    let currentSlideIndex = 0;
+    const totalSlides = 5;
+
+    function getVisibleSlidesCount() {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    }
+
+    function updateTestimonialCarousel() {
+      const track = document.getElementById('testimonial-track');
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const indicator = document.getElementById('carousel-indicator');
+      if (!track || slides.length === 0) return;
+
+      const visibleCount = getVisibleSlidesCount();
+      const maxIndex = Math.max(0, totalSlides - visibleCount);
+      if (currentSlideIndex > maxIndex) currentSlideIndex = maxIndex;
+      if (currentSlideIndex < 0) currentSlideIndex = 0;
+
+      const slideWidth = slides[0].offsetWidth;
+      const gap = 24; // gap-6 = 1.5rem = 24px
+      const offset = currentSlideIndex * (slideWidth + gap);
+
+      track.style.transform = `translateX(-${offset}px)`;
+
+      if (indicator) {
+        indicator.textContent = `0${currentSlideIndex + 1} / 0${totalSlides}`;
+      }
+
+      renderCarouselDots(maxIndex);
+    }
+
+    function moveTestimonialCarousel(direction) {
+      const visibleCount = getVisibleSlidesCount();
+      const maxIndex = Math.max(0, totalSlides - visibleCount);
+      currentSlideIndex += direction;
+
+      if (currentSlideIndex > maxIndex) currentSlideIndex = 0;
+      if (currentSlideIndex < 0) currentSlideIndex = maxIndex;
+
+      updateTestimonialCarousel();
+    }
+
+    function renderCarouselDots(maxIndex) {
+      const dotsContainer = document.getElementById('carousel-dots');
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Ir al grupo de testimonios ${i + 1}`);
+        dot.className = i === currentSlideIndex
+          ? 'w-8 h-2.5 rounded-full bg-[#172B46] transition-all'
+          : 'w-2.5 h-2.5 rounded-full bg-[#D9DDE1] hover:bg-[#B49A70] transition-all';
+        dot.onclick = () => {
+          currentSlideIndex = i;
+          updateTestimonialCarousel();
+        };
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    /**
+     * ANIMACIONES SUTILES AL DESPLAZARSE
+     */
+    function triggerScrollReveal() {
+      const elements = document.querySelectorAll('.page-view.active .reveal-on-scroll');
+      const triggerBottom = window.innerHeight * 0.92;
+
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // Soporte para botón Atrás/Adelante del navegador
+    window.addEventListener('popstate', () => {
+      const hashPage = window.location.hash.replace('#', '');
+      navigateTo(hashPage || 'inicio', false);
+    });
+
+    window.addEventListener('scroll', triggerScrollReveal);
+    window.addEventListener('resize', updateTestimonialCarousel);
+
+    window.onload = function () {
+      initBrandAssets();
+      const initialHash = window.location.hash.replace('#', '');
+      navigateTo(initialHash || 'inicio', false);
+      updateTestimonialCarousel();
+      triggerScrollReveal();
+    };
+  </script>
+</body>
+</html>
