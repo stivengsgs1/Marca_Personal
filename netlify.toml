@@ -1,0 +1,10 @@
+# Static site: a single self-contained HTML page with no build step.
+[build]
+  publish = "."
+  command = ""
+
+# The page isn't named index.html, so serve it at the site root.
+[[redirects]]
+  from = "/"
+  to = "/marca_personal_liderazgo_con_criterio.html"
+  status = 200
