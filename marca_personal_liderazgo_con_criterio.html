@@ -325,12 +325,12 @@
 
             <!-- Espacio amplio y reemplazable para fotografía profesional -->
             <div class="lg:col-span-5">
-              <div class="relative rounded-2xl overflow-hidden bg-[#172B46] border-2 border-[#B49A70] shadow-2xl aspect-[4/5] max-w-md mx-auto">
-                <!-- RUTA REEMPLAZABLE: cambia src="jefe.jpg" por el nombre/ruta de tu fotografía -->
+              <div class="relative rounded-2xl overflow-hidden bg-white border-2 border-[#B49A70] shadow-2xl aspect-[4/5] max-w-md mx-auto">
+                <!-- RUTA REEMPLAZABLE: cambia src por tu fotografía definitiva cuando la subas -->
                 <img id="hero-profile-img"
-                     src="jefe.jpg"
-                     alt="Fotografía profesional del titular"
-                     class="w-full h-full object-cover object-center" />
+                     src="https://img.magnific.com/foto-gratis/hombre-negocios-que-senala-al-frente-sobre-fondo-blanco_1368-6045.jpg?semt=ais_hybrid&w=740&q=80"
+                     alt="Fotografía profesional de referencia del titular"
+                     class="w-full h-full object-cover object-top" />
               </div>
             </div>
 
@@ -1671,7 +1671,7 @@
      */
     const BRAND_ASSETS = {
       logoPath: 'imagenes/logo.png',
-      profilePhotoPath: 'jefe.jpg',
+      profilePhotoPath: 'https://img.magnific.com/foto-gratis/hombre-negocios-que-senala-al-frente-sobre-fondo-blanco_1368-6045.jpg?semt=ais_hybrid&w=740&q=80',
       resumeImagePath: 'imagenes/hoja-de-vida.jpg'
     };
 
@@ -1702,9 +1702,9 @@
             </linearGradient>
           </defs>
           <rect width="600" height="750" fill="url(#bgGrad)"/>
-        </svg>
-      `.trim();
-      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    // 2. Respaldo fotográfico de referencia (en caso de que el enlace externo falle)
+    function createProvisionalProfileURI() {
+      return 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
     }
 
     // 3. Generación de Imagen Provisional para Hoja de Vida (Sin inventar experiencia)
